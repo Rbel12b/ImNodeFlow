@@ -1045,6 +1045,8 @@ namespace ImFlow
          */
         std::shared_ptr<PinStyle>& getStyle() { return m_style; }
 
+        Pin* setStyle(std::shared_ptr<PinStyle> style) { m_style = style; return this; }
+
         /**
          * @brief <BR>Get pin's link attachment point (socket)
          * @return Grid coordinates to the attachment point between the link and the pin's socket
