@@ -11,8 +11,8 @@
 #include <algorithm>
 #include <functional>
 #include <unordered_map>
-#include <imgui.h>
 #include "../src/imgui_bezier_math.h"
+#include <imgui.h>
 #include "../src/context_wrapper.h"
 
 //#define ConnectionFilter_None       [](ImFlow::Pin* out, ImFlow::Pin* in){ return true; }
