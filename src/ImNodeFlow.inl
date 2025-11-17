@@ -52,6 +52,22 @@ namespace ImFlow
     }
 
     template<typename T, typename... Params>
+    std::shared_ptr<T> ImNodeFlow::addNode_uid(const NodeUID& uid, const ImVec2& pos, Params&&... args)
+    {
+        static_assert(std::is_base_of<BaseNode, T>::value, "Pushed type is not a subclass of BaseNode!");
+
+        std::shared_ptr<T> n = std::make_shared<T>(std::forward<Params>(args)...);
+        n->setPos(pos);
+        n->setHandler(this);
+        if (!n->getStyle())
+            n->setStyle(NodeStyle::cyan());
+
+        n->setUID(uid);
+        m_nodes[uid] = n;
+        return n;
+    }
+
+    template<typename T, typename... Params>
     std::shared_ptr<T> ImNodeFlow::placeNodeAt(const ImVec2& pos, Params&&... args)
     {
         return addNode<T>(screen2grid(pos), std::forward<Params>(args)...);

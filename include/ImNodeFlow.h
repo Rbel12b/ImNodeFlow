@@ -310,6 +310,20 @@ namespace ImFlow
         template<typename T, typename... Params>
         std::shared_ptr<T> addNode(const ImVec2& pos, Params&&... args);
 
+        /**
+         * @brief <BR>Add a node to the grid with a specific uid
+         * @tparam T Derived class of <BaseNode> to be added
+         * @tparam Params types of optional args to forward to derived class ctor
+         * @param uid uid, the caller must ensure it's unique
+         * @param pos Position of the Node in grid coordinates
+         * @param args Optional arguments to be forwarded to derived class ctor
+         * @return Shared pointer of the pushed type to the newly added node
+         *
+         * Inheritance is checked at compile time, \<T> MUST be derived from BaseNode.
+         */
+        template<typename T, typename... Params>
+        std::shared_ptr<T> addNode_uid(const NodeUID& uid, const ImVec2& pos, Params&&... args);
+
     private:
         /**
          * @brief <BR>Helper struct for creating a node struct from a lambda
